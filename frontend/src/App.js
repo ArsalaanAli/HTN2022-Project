@@ -6,7 +6,14 @@ import { React, useState, useEffect } from "react";
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
   useEffect(() => {
-    console.log(currentPage);
+    if ("geolocation" in navigator) {
+      console.log("Available");
+      navigator.geolocation.getCurrentPosition((pos) => {
+        console.log(pos);
+      });
+    } else {
+      console.log("Not Available");
+    }
   }, [currentPage]);
 
   if (currentPage === "home") {

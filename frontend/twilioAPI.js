@@ -1,20 +1,22 @@
-const accountSid = 'AC71d858b638017f8420dafeb72bf89a57'; // Your Account SID from www.twilio.com/console
-const authToken = '64ed3778d592fcc10d1613b66af6da9f'; // Your Auth Token from www.twilio.com/console
-console.log("hello")
+const phoneBook = ["+14379968383", "+16046526266", "+14372344268"];
+const myMessage = "hi where is olivia";
 
-const twilio = require('twilio');
-console.log("hello2")
+const accountSid = "AC71d858b638017f8420dafeb72bf89a57"; // Your Account SID from www.twilio.com/console
+const authToken = "fc00c39db00cf335cfe3ec75bf1a3177"; // Your Auth Token from www.twilio.com/console
 
+const twilio = require("twilio");
 
 const client = new twilio(accountSid, authToken);
-console.log("hello3")
 
+phoneBook.forEach(sendMessage);
 
-client.messages
-  .create({
-    body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
-    from: '+12568183515',
-    to: '+14372344268'
-  })
-  .then((message) => console.log(message.sid));
-  console.log("hello4")
+function sendMessage(number) {
+  console.log(number);
+  client.messages
+    .create({
+      body: myMessage,
+      from: "+12568183515",
+      to: number,
+    })
+    .then((message) => console.log(message.sid));
+}

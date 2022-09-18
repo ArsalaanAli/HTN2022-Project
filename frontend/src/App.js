@@ -1,20 +1,11 @@
 import "./App.css";
-import Home from "./Home";
+import Dectector from "./Detector";
 import Login from "./Login";
 import { React, useState, useEffect } from "react";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
-  useEffect(() => {
-    if ("geolocation" in navigator) {
-      console.log("Available");
-      navigator.geolocation.getCurrentPosition((pos) => {
-        console.log(pos);
-      });
-    } else {
-      console.log("Not Available");
-    }
-  }, [currentPage]);
+  useEffect(() => {}, [currentPage]);
 
   if (currentPage === "home") {
     return (
@@ -29,3 +20,14 @@ function App() {
 }
 
 export default App;
+
+/*
+    if ("geolocation" in navigator) {
+      console.log("Available");
+      navigator.geolocation.getCurrentPosition((pos) => {
+        console.log(pos);
+      });
+    } else {
+      console.log("Not Available");
+    }
+*/
